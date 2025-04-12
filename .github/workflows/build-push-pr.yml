@@ -33,22 +33,7 @@ jobs:
     with:
       file_to_build: Dockerfile
       push_to_images: |
-        ghcr.io/mastodon/mastodon
-      version_metadata: ${{ needs.compute-suffix.outputs.metadata }}
-      flavor: |
-        latest=auto
-      tags: |
-        type=ref,event=pr
-        type=ref,event=pr,suffix=-${{ needs.compute-suffix.outputs.short_sha }}
-    secrets: inherit
-
-  build-image-streaming:
-    needs: compute-suffix
-    uses: ./.github/workflows/build-container-image.yml
-    with:
-      file_to_build: streaming/Dockerfile
-      push_to_images: |
-        ghcr.io/mastodon/mastodon-streaming
+        ghcr.io/fediway/mastodon
       version_metadata: ${{ needs.compute-suffix.outputs.metadata }}
       flavor: |
         latest=auto
