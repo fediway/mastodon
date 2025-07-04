@@ -13,7 +13,11 @@ module Mastodon
     end
 
     def patch
-      7
+      9
+    end
+
+    def suffix
+      '+fediway-0.1.0'
     end
 
     def suffix
