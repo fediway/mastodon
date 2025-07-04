@@ -16,8 +16,12 @@ module Mastodon
       7
     end
 
+    def suffix
+      '+fediway-0.1.0'
+    end
+
     def default_prerelease
-      ''
+      'alpha.1'
     end
 
     def prerelease
@@ -33,7 +37,7 @@ module Mastodon
     end
 
     def to_s
-      components = [to_a.join('.')]
+      components = [to_a.join('.'), suffix]
       components << "-#{prerelease}" if prerelease.present?
       components << "+#{build_metadata}" if build_metadata.present?
       components.join
@@ -50,7 +54,7 @@ module Mastodon
     end
 
     def repository
-      ENV.fetch('GITHUB_REPOSITORY', 'mastodon/mastodon')
+      ENV.fetch('GITHUB_REPOSITORY', 'fediway/mastodon')
     end
 
     def source_base_url
