@@ -20,10 +20,6 @@ module Mastodon
       '+fediway-0.1.0'
     end
 
-    def suffix
-      '+fediway-0.1.0'
-    end
-
     def default_prerelease
       'alpha.1'
     end
