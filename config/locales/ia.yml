@@ -1775,7 +1775,7 @@ ia:
     aliases: Aliases de conto
     appearance: Apparentia
     authorized_apps: Apps autorisate
-    back: Retornar a Mastodon
+    back: Retornar a Fediway
     delete: Deletion de conto
     development: Disveloppamento
     edit_profile: Modificar profilo

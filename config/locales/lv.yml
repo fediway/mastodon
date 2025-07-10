@@ -1844,7 +1844,7 @@ lv:
     aliases: Konta aizstājvārdi
     appearance: Izskats
     authorized_apps: Pilnvarotās lietotnes
-    back: Atgriezties Mastodon
+    back: Atgriezties Fediway
     delete: Konta dzēšana
     development: Izstrāde
     edit_profile: Labot profilu

@@ -1566,7 +1566,7 @@ ie:
     aliases: Aliases del conto
     appearance: Aspecte
     authorized_apps: Autorisat aplicationes
-    back: Retornar a Mastodon
+    back: Retornar a Fediway
     delete: Deletion de conto
     development: Developation
     edit_profile: Modificar profil

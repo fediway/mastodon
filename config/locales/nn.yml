@@ -1818,7 +1818,7 @@ nn:
     aliases: Kallenamn til kontoen
     appearance: Utsjånad
     authorized_apps: Godkjende appar
-    back: Tilbake til Mastodon
+    back: Tilbake til Fediway
     delete: Kontosletting
     development: Utvikling
     edit_profile: Endr profil

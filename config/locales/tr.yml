@@ -1818,7 +1818,7 @@ tr:
     aliases: Hesap takma adları
     appearance: Görünüm
     authorized_apps: Yetkili uygulamalar
-    back: Mastodon'a geri dön
+    back: Fediway'a geri dön
     delete: Hesap silme
     development: Geliştirme
     edit_profile: Profili düzenle
