@@ -1466,7 +1466,7 @@ body > [data-popper-placement] {
   .video-player,
   .audio-player,
   .attachment-list {
-    margin-top: 16px;
+    margin-top: 10px;
   }
 
   &--is-quote {
@@ -1608,7 +1608,7 @@ body > [data-popper-placement] {
 
 .status__info {
   font-size: 15px;
-  padding-bottom: 10px;
+  padding-bottom: 4px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -4028,7 +4028,7 @@ a.account__display-name {
   position: relative;
   font-size: 14px;
   color: $darker-text-color;
-  margin-top: 14px;
+  margin-top: 10px;
   text-decoration: none;
   overflow: hidden;
   border: 1px solid var(--background-border-color);
