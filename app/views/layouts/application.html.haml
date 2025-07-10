@@ -40,7 +40,6 @@
     - if ENV['PLAUSIBLE_SCRIPT'].present?
       %script{ defer: true, 'data-domain': ENV.fetch('LOCAL_DOMAIN', nil), src: ENV.fetch('PLAUSIBLE_SCRIPT', nil) }
 
-
     = custom_stylesheet
 
     = yield :header_tags
