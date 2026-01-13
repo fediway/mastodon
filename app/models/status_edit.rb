@@ -45,6 +45,20 @@ class StatusEdit < ApplicationRecord
   delegate :local?, :application, :edited?, :edited_at,
            :discarded?, :reply?, :visibility, :language, to: :status
 
+<<<<<<< HEAD
+=======
+  def quote
+    underlying_quote = status.quote
+    return if underlying_quote.nil? || underlying_quote.id != quote_id
+
+    underlying_quote
+  end
+
+  def with_preview_card?
+    false
+  end
+
+>>>>>>> 55a7b1ea5820b2fa8d754108b6a948d4bd60d98b
   def with_media?
     ordered_media_attachments.any?
   end
