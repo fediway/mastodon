@@ -31,9 +31,7 @@ jobs:
 
       matrix:
         postgres:
-          - 14-alpine
-          - 15-alpine
-          - 16-alpine
+          # FEDIWAY: we deploy on Postgres 17; drop the 14/15/16 compat matrix (4 jobs → 1)
           - 17-alpine
 
     services:
