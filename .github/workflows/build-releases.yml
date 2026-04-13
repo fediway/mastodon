@@ -9,22 +9,28 @@ permissions:
   packages: write
 
 jobs:
-  # FEDIWAY: removed `check-latest-stable` job. Upstream used stable-X.Y branches to
-  # decide whether a tag should receive the `:latest` floating tag. Fediway uses a
-  # single `release` branch + semver tags, so we let docker/metadata-action's
-  # `latest=auto` handle it: any non-prerelease semver tag becomes :latest. Revisit
-  # when we ever need stricter latest-tagging (e.g. hotfix backports for old versions).
+  # FEDIWAY: derive MASTODON_VERSION_METADATA from the release tag
+  compute-version-metadata:
+    runs-on: ubuntu-latest
+    outputs:
+      fediway_metadata: ${{ steps.compute.outputs.metadata }}
+    steps:
+      - id: compute
+        run: |
+          ref="${GITHUB_REF_NAME}"
+          echo "metadata=fediway.${ref#v}" >> "$GITHUB_OUTPUT"
 
   build-image:
+    needs: compute-version-metadata
     uses: ./.github/workflows/build-container-image.yml
     with:
       file_to_build: Dockerfile
-      # FEDIWAY: push only to our own ghcr.io namespace. Removed `tootsuite/mastodon`
-      # (Docker Hub) — we don't publish there.
+      # FEDIWAY: only push to our own registry
       push_to_images: |
         ghcr.io/fediway/mastodon
       # Do not use cache when building releases, so apt update is always ran and the release always contain the latest packages
       cache: false
+      version_metadata: ${{ needs.compute-version-metadata.outputs.fediway_metadata }}
       flavor: |
         latest=auto
       tags: |
@@ -32,7 +38,4 @@ jobs:
         type=pep440,pattern=v{{major}}.{{minor}}
     secrets: inherit
 
-  # FEDIWAY: removed `build-image-streaming` job. We use upstream's published
-  # streaming image (`ghcr.io/mastodon/mastodon-streaming:<upstream-version>`) and
-  # never build our own. The streaming image version must match the upstream base
-  # of our Fediway release — see FEDIWAY.md.
+  # FEDIWAY: removed build-image-streaming; we use upstream's published image
