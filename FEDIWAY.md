@@ -7,6 +7,7 @@ Fork of [Mastodon](https://github.com/mastodon/mastodon), maintained at https://
 Fediway-specific behavior is feature-flagged. With every flag unset, the fork is byte-compatible with upstream Mastodon.
 
 - **`FEDIWAY_AUTH_DIRECT=true`** — enables OAuth 2.0 password grant ([RFC 6749 §4.3](https://datatracker.ietf.org/doc/html/rfc6749#section-4.3)) on the existing `/oauth/token` endpoint. POST `{grant_type: password, username, password, client_id, scope}` returns a bearer token without the OAuth redirect dance. 2FA users are rejected — the redirect-based flow remains the path for them. Mastodon's existing OAuth code-exchange flow is unchanged whether the flag is set or not.
+- **`POST /api/fediway/v1/sessions/bridge`** — additive endpoint. Takes a valid `Authorization: Bearer <token>` and creates a Devise session cookie for the same user. Lets a single Fediway-frontend login give access to both the JSON API (via the bearer token) and the server-rendered admin / settings pages (via the session cookie), without requiring a second sign-in. No env flag — the endpoint exists whenever the fork is deployed, harmless when unused.
 - **`FEDIWAY_WEB_URL=<url>`** — Mastodon's React SPA routes redirect to this URL. The SPA serves unchanged when unset.
 
 ## Runtime version identification

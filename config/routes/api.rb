@@ -371,4 +371,11 @@ namespace :api, format: false do
     resources :embeds, only: [:show]
     resources :push_subscriptions, only: [:create, :destroy, :update]
   end
+
+  # FEDIWAY: SSO bridge — exchange a Doorkeeper bearer token for a Devise session
+  namespace :fediway do
+    namespace :v1 do
+      post 'sessions/bridge', to: 'sessions#bridge'
+    end
+  end
 end
