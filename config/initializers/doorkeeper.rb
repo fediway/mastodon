@@ -9,9 +9,16 @@ Doorkeeper.configure do
     current_user || redirect_to(new_user_session_url)
   end
 
-  # Disable Resource Owner Password Credentials Grant Flow
+  # FEDIWAY: gate direct password grant on the FEDIWAY_AUTH_DIRECT env var
   resource_owner_from_credentials do
-    nil
+    next nil unless ENV['FEDIWAY_AUTH_DIRECT'] == 'true'
+
+    user = User.find_for_authentication(email: params[:username])
+    next nil unless user&.valid_password?(params[:password])
+    next nil unless user.active_for_authentication?
+    next nil if user.otp_required_for_login?
+
+    user
   end
 
   # Doorkeeper provides some administrative interfaces for managing OAuth
@@ -165,7 +172,8 @@ Doorkeeper.configure do
   #   http://tools.ietf.org/html/rfc6819#section-4.4.3
   #
 
-  grant_flows %w(authorization_code client_credentials)
+  # FEDIWAY: include password grant; resource_owner_from_credentials gates the auth
+  grant_flows %w(authorization_code client_credentials password)
 
   # Under some circumstances you might want to have applications auto-approved,
   # so that the user skips the authorization step.
