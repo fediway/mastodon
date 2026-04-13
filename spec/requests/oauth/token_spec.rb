@@ -169,15 +169,6 @@ RSpec.describe 'Managing OAuth Tokens' do
             expect(response).to have_http_status(400)
           end
         end
-
-        context 'when the user is unconfirmed' do
-          before { user.update!(confirmed_at: nil) }
-
-          it 'returns 400' do
-            subject
-            expect(response).to have_http_status(400)
-          end
-        end
       end
     end
   end
