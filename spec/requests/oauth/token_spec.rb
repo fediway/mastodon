@@ -103,6 +103,74 @@ RSpec.describe 'Managing OAuth Tokens' do
         end
       end
     end
+
+    context "with grant_type 'password'" do
+      # FEDIWAY: direct password grant gated on FEDIWAY_AUTH_DIRECT
+      let(:user) { Fabricate(:user, password: 'P@ssword12345') }
+      let(:grant_type) { 'password' }
+      let(:code) { nil }
+      let(:scope) { 'read' }
+      let(:params) do
+        {
+          grant_type: grant_type,
+          client_id: application.uid,
+          client_secret: application.secret,
+          username: user.email,
+          password: 'P@ssword12345',
+          scope: scope,
+        }
+      end
+
+      context 'when FEDIWAY_AUTH_DIRECT is unset' do
+        it 'returns 400' do
+          subject
+          expect(response).to have_http_status(400)
+        end
+      end
+
+      context 'when FEDIWAY_AUTH_DIRECT is enabled' do
+        around do |example|
+          ClimateControl.modify(FEDIWAY_AUTH_DIRECT: 'true') { example.run }
+        end
+
+        context 'with valid credentials' do
+          it 'returns an access token' do
+            subject
+
+            expect(response).to have_http_status(200)
+            expect(response.parsed_body[:access_token]).to be_present
+            expect(response.parsed_body[:token_type]).to eq('Bearer')
+          end
+        end
+
+        context 'with the wrong password' do
+          let(:params) { super().merge(password: 'wrong-password') }
+
+          it 'returns 400' do
+            subject
+            expect(response).to have_http_status(400)
+          end
+        end
+
+        context 'with an unknown email' do
+          let(:params) { super().merge(username: 'nobody@example.test') }
+
+          it 'returns 400' do
+            subject
+            expect(response).to have_http_status(400)
+          end
+        end
+
+        context 'when the user has 2FA enabled' do
+          before { user.update!(otp_required_for_login: true, otp_secret: User.generate_otp_secret) }
+
+          it 'returns 400' do
+            subject
+            expect(response).to have_http_status(400)
+          end
+        end
+      end
+    end
   end
 
   describe 'POST /oauth/revoke' do
