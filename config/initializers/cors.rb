@@ -26,4 +26,17 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
       resource '/oauth/userinfo', methods: [:get, :post]
     end
   end
+
+  # FEDIWAY: dev-only CORS exception so a frontend on localhost can POST to the
+  # credentials endpoint and have the session cookie stick. credentials: true
+  # requires a specific origin (not '*'). Off in production unless explicitly set.
+  if ENV['FEDIWAY_DEV_CORS_ORIGINS'].present?
+    allow do
+      origins(*ENV.fetch('FEDIWAY_DEV_CORS_ORIGINS').split(',').map(&:strip))
+      resource '/api/fediway/v1/credentials',
+               methods: %i(post options),
+               headers: :any,
+               credentials: true
+    end
+  end
 end
