@@ -9,9 +9,16 @@ Doorkeeper.configure do
     current_user || redirect_to(new_user_session_url)
   end
 
-  # FEDIWAY: gate direct password grant on the FEDIWAY_AUTH_DIRECT env var
+  # FEDIWAY: gate direct password grant on FEDIWAY_AUTH_DIRECT + an explicit
+  # client_id allowlist. Only first-party clients listed in
+  # FEDIWAY_AUTH_DIRECT_CLIENT_IDS may use password grant. Empty allowlist =
+  # disabled. Fails closed on misconfiguration.
   resource_owner_from_credentials do
     next nil unless ENV['FEDIWAY_AUTH_DIRECT'] == 'true'
+
+    allowlist = ENV.fetch('FEDIWAY_AUTH_DIRECT_CLIENT_IDS', '').split(',').map(&:strip).reject(&:empty?)
+    next nil if allowlist.empty?
+    next nil unless allowlist.include?(params[:client_id])
 
     user = User.find_for_authentication(email: params[:username])
     next nil unless user&.valid_password?(params[:password])

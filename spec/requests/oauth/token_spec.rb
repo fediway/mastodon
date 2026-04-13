@@ -128,9 +128,40 @@ RSpec.describe 'Managing OAuth Tokens' do
         end
       end
 
-      context 'when FEDIWAY_AUTH_DIRECT is enabled' do
+      context 'when FEDIWAY_AUTH_DIRECT is enabled but the allowlist is empty' do
         around do |example|
           ClimateControl.modify(FEDIWAY_AUTH_DIRECT: 'true') { example.run }
+        end
+
+        it 'fails closed and returns 400' do
+          subject
+          expect(response).to have_http_status(400)
+        end
+      end
+
+      context 'when FEDIWAY_AUTH_DIRECT is enabled but the client_id is not in the allowlist' do
+        around do |example|
+          ClimateControl.modify(
+            FEDIWAY_AUTH_DIRECT: 'true',
+            FEDIWAY_AUTH_DIRECT_CLIENT_IDS: 'some-other-id,yet-another-id',
+          ) { example.run }
+        end
+
+        it 'returns 400' do
+          subject
+          expect(response).to have_http_status(400)
+        end
+      end
+
+      context 'when FEDIWAY_AUTH_DIRECT is enabled and the client_id is allowlisted' do
+        before do
+          ENV['FEDIWAY_AUTH_DIRECT'] = 'true'
+          ENV['FEDIWAY_AUTH_DIRECT_CLIENT_IDS'] = application.uid
+        end
+
+        after do
+          ENV.delete('FEDIWAY_AUTH_DIRECT')
+          ENV.delete('FEDIWAY_AUTH_DIRECT_CLIENT_IDS')
         end
 
         context 'with valid credentials' do
