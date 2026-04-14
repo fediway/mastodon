@@ -1,0 +1,52 @@
+// FEDIWAY: Asta Sans display font for the auth surface. Registered under
+// its literal family name so nothing in the upstream Mastodon SCSS picks
+// it up automatically — only auth-scoped rules that opt in via font-family.
+
+@font-face {
+  font-family: 'Asta Sans';
+  src: url('../../fonts/asta-sans/asta-sans-v3-latin-300.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Asta Sans';
+  src: url('../../fonts/asta-sans/asta-sans-v3-latin-regular.woff2')
+    format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Asta Sans';
+  src: url('../../fonts/asta-sans/asta-sans-v3-latin-500.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Asta Sans';
+  src: url('../../fonts/asta-sans/asta-sans-v3-latin-600.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Asta Sans';
+  src: url('../../fonts/asta-sans/asta-sans-v3-latin-700.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Asta Sans';
+  src: url('../../fonts/asta-sans/asta-sans-v3-latin-800.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}

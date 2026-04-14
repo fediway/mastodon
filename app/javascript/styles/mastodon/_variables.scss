@@ -113,3 +113,24 @@ $emojis-requiring-inversion: 'back' 'copyright' 'curly_loop' 'currency_exchange'
   'end' 'heavy_check_mark' 'heavy_division_sign' 'heavy_dollar_sign'
   'heavy_minus_sign' 'heavy_multiplication_x' 'heavy_plus_sign' 'on'
   'registered' 'soon' 'spider' 'telephone_receiver' 'tm' 'top' 'wavy_dash' !default;
+
+// FEDIWAY: brand tokens scoped to the auth surface. Additive — upstream
+// $blurple-* / $ui-* variables are untouched, so admin and settings keep
+// their current look.
+$fediway-navy: #232b37;
+$fediway-navy-hover: #1a212c;
+$fediway-lavender: #dbddff;
+$fediway-lavender-hover: #c8cbf5;
+$fediway-cream: #ede6d6;
+$fediway-cream-subtle: #f7f3e9;
+$fediway-charcoal: #373442;
+$fediway-off-white: #fefeff;
+$fediway-border-light: #e8e6df;
+$fediway-border-dark: #3b3c55;
+$fediway-ring: #615993;
+$fediway-ring-dark: #9c93c4;
+$fediway-destructive: #c23737;
+$fediway-destructive-bg: #fee9e6;
+$fediway-destructive-border: #f5c8c4;
+$fediway-muted-text-light: #6d7180;
+$fediway-muted-text-dark: #9c9aa4;

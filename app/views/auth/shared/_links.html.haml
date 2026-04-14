@@ -1,18 +1,27 @@
-%ul.no-list
-  - if user_signed_in?
-    %li= link_to t('settings.account_settings'), edit_user_registration_path
-  - else
-    - if controller_name != 'sessions'
-      %li= link_to_login t('auth.login')
+-# FEDIWAY: secondary auth nav — inline links with gap-based separation. Skip whichever link points at the current page so we never offer "go where you already are". Middot dividers are emitted but hidden via CSS in favour of flex gap.
 
-    - if controller_name != 'registrations'
-      %li= link_to t('auth.register'), available_sign_up_path
+:ruby
+  links = []
 
-    - if controller_name != 'passwords' && controller_name != 'registrations'
-      %li= link_to t('auth.forgot_password'), new_user_password_path
+  if user_signed_in?
+    links << link_to(t('settings.account_settings'), edit_user_registration_path)
+  else
+    links << link_to_login(t('auth.login')) unless controller_name == 'sessions'
+    links << link_to(t('auth.register'), available_sign_up_path) unless controller_name == 'registrations'
+    links << link_to(t('auth.forgot_password'), new_user_password_path) unless controller_name.in?(%w(passwords registrations))
+  end
 
-  - if controller_name != 'confirmations' && (!user_signed_in? || !current_user.confirmed? || current_user.unconfirmed_email.present?)
-    %li= link_to t('auth.didnt_get_confirmation'), new_user_confirmation_path
+  if controller_name != 'confirmations' && (!user_signed_in? || !current_user.confirmed? || current_user.unconfirmed_email.present?)
+    links << link_to(t('auth.didnt_get_confirmation'), new_user_confirmation_path)
+  end
 
-  - if user_signed_in?
-    %li= link_to t('auth.logout'), destroy_user_session_path, data: { method: :delete }
+  if user_signed_in?
+    links << link_to(t('auth.logout'), destroy_user_session_path, data: { method: :delete })
+  end
+
+- if links.any?
+  %nav.auth-footer{ 'aria-label': t('fediway.auth.nav_label') }
+    - links.each_with_index do |link, idx|
+      - if idx.positive?
+        %span.auth-footer__divider{ 'aria-hidden': true } &middot;
+      = link
