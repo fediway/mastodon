@@ -2,16 +2,18 @@
   = vite_typescript_tag 'public.tsx', crossorigin: 'anonymous'
 
 - content_for :content do
-  .container-alt
-    .logo-container
-      %h1
-        - if within_authorization_flow?
-          = logo_as_symbol(:wordmark)
-        - else
-          = link_to root_path do
-            = logo_as_symbol(:wordmark)
+  .auth-layout
+    .auth-hero
+      - if within_authorization_flow?
+        .auth-logo
+          = image_tag frontend_asset_path('images/fediway/app-icon.svg'), alt: '', class: 'auth-logo__icon'
+          %span.auth-wordmark Fediway
+      - else
+        = link_to root_path, class: 'auth-logo' do
+          = image_tag frontend_asset_path('images/fediway/app-icon.svg'), alt: '', class: 'auth-logo__icon'
+          %span.auth-wordmark Fediway
 
-    .form-container
+    .auth-card
       = render 'flashes'
 
       = yield

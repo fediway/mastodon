@@ -5,6 +5,11 @@
 @use 'fonts/roboto';
 @use 'fonts/roboto-mono';
 
+// FEDIWAY: load Inter + Asta Sans under their literal family names so only
+// opt-in rules (the auth surface) use them. Roboto stays the global default.
+@use 'fonts/inter';
+@use 'fonts/asta-sans';
+
 @use 'mastodon/reset';
 @use 'mastodon/basics';
 @use 'mastodon/branding';

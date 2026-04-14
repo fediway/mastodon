@@ -20,4 +20,25 @@ body {
   --rich-text-decorations-color: rgba(255, 175, 212, 100%);
   --input-placeholder-color: #{color.adjust($dark-text-color, $alpha: -0.5)};
   --input-background-color: #{darken($ui-base-color, 10%)};
+
+  // FEDIWAY: auth surface tokens for light mode. White page bg with
+  // the three landing-page radial gradients applied via .auth-layout
+  // background-image. Card stays near-white for subtle separation.
+  --fediway-background: #fff;
+  --fediway-card: #{$fediway-off-white};
+  --fediway-card-foreground: #{$fediway-navy};
+  --fediway-foreground: #{$fediway-navy};
+  --fediway-primary: #{$fediway-navy};
+  --fediway-primary-hover: #{$fediway-navy-hover};
+  --fediway-primary-foreground: #fff;
+  --fediway-secondary: #{$fediway-lavender};
+  --fediway-secondary-hover: #{$fediway-lavender-hover};
+  --fediway-secondary-foreground: #{$fediway-navy};
+  --fediway-muted: #{$fediway-cream-subtle};
+  --fediway-muted-foreground: #{$fediway-muted-text-light};
+  --fediway-border: #{$fediway-border-light};
+  --fediway-ring: #{$fediway-ring};
+  --fediway-destructive: #{$fediway-destructive};
+  --fediway-destructive-bg: #{$fediway-destructive-bg};
+  --fediway-destructive-border: #{$fediway-destructive-border};
 }

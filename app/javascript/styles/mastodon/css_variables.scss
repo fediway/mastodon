@@ -37,6 +37,27 @@
   --input-placeholder-color: #{$dark-text-color};
   --input-background-color: var(--surface-variant-background-color);
   --on-input-color: #{$secondary-text-color};
+
+  // FEDIWAY: brand tokens for the auth surface. Default values here map
+  // to dark mode (Mastodon's default theme is dark). The light-mode theme
+  // overrides these in mastodon-light/css_variables.scss.
+  --fediway-background: #{$fediway-charcoal};
+  --fediway-card: #{$fediway-navy};
+  --fediway-card-foreground: #f0ece5;
+  --fediway-foreground: #f0ece5;
+  --fediway-primary: #f0ece5;
+  --fediway-primary-hover: #fff;
+  --fediway-primary-foreground: #{$fediway-navy};
+  --fediway-secondary: #484a6c;
+  --fediway-secondary-hover: #5a5d80;
+  --fediway-secondary-foreground: #f0ece5;
+  --fediway-muted: #32374c;
+  --fediway-muted-foreground: #{$fediway-muted-text-dark};
+  --fediway-border: #{$fediway-border-dark};
+  --fediway-ring: #{$fediway-ring-dark};
+  --fediway-destructive: #{$fediway-destructive};
+  --fediway-destructive-bg: rgba(194 55 55 / 15%);
+  --fediway-destructive-border: rgba(194 55 55 / 40%);
 }
 
 body {
