@@ -1,10 +1,10 @@
 @use '../fonts/inter';
 
 body {
-  accent-color: #6364ff;
+  accent-color: #232b37;
   overflow-wrap: anywhere;
   margin: 0;
-  background-color: #f3f2f5;
+  background-color: #fafaf7;
   padding: 0;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
@@ -46,8 +46,8 @@ table + p {
   min-width: 280px;
   font-family: Inter, 'Lucida Grande', sans-serif;
   overflow-wrap: anywhere;
-  color: #17063b;
-  background-color: #f3f2f5;
+  color: #232b37;
+  background-color: #fafaf7;
 }
 
 .email-container {
@@ -98,7 +98,7 @@ table + p {
 
 // Account
 .email-account-banner-table {
-  background-color: #f3f2f5;
+  background-color: #fafaf7;
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
 }
@@ -147,7 +147,7 @@ table + p {
   font-size: 16px;
   font-weight: 600;
   line-height: 24px;
-  color: #17063b;
+  color: #232b37;
 }
 
 .email-account-handle {
@@ -166,7 +166,7 @@ table + p {
 
   b {
     font-weight: 600;
-    color: #17063b;
+    color: #232b37;
   }
 
   span {
@@ -184,7 +184,7 @@ table + p {
   p,
   ul,
   ol {
-    color: #17063b;
+    color: #232b37;
     font-size: 14px;
     line-height: 20px;
 
@@ -193,11 +193,11 @@ table + p {
     }
 
     a:not([class]) {
-      color: #6364ff;
+      color: #232b37;
       text-decoration: none;
 
       &:hover {
-        color: #563acc !important;
+        color: #1a212c !important;
       }
     }
   }
@@ -266,7 +266,7 @@ table + p {
 // Header
 .email-header-td {
   padding: 16px 32px;
-  background-color: #1b001f;
+  background-color: #232b37;
   background-image: url('../../images/mailer-new/common/header-bg-start.png');
   background-position: left top;
   background-repeat: repeat;
@@ -378,7 +378,7 @@ table + p {
   border-radius: 12px 12px 0 0;
   width: 236px;
   height: 80px;
-  background-color: #f3f2f5 !important;
+  background-color: #fafaf7 !important;
   background-position: center !important;
   background-size: cover !important;
 }
@@ -397,7 +397,7 @@ table + p {
   overflow: hidden;
   text-overflow: ellipsis;
   word-break: break-all;
-  color: #17063b;
+  color: #232b37;
   font-size: 14px;
   line-height: 20px;
   font-weight: 600;
@@ -429,7 +429,7 @@ table + p {
 
 .email-header-after-inside-div {
   height: 30px;
-  background-color: #1b001f;
+  background-color: #232b37;
 }
 
 // Body content
@@ -458,14 +458,14 @@ table + p {
   & > p {
     font-size: 14px;
     line-height: 20px;
-    color: #17063b;
+    color: #232b37;
 
     a {
-      color: #6364ff;
+      color: #232b37;
       text-decoration: none;
 
       &:hover {
-        color: #563acc !important;
+        color: #1a212c !important;
       }
     }
   }
@@ -474,7 +474,7 @@ table + p {
 // Texts
 .email-h2 {
   margin-bottom: 4px;
-  color: #17063b;
+  color: #232b37;
   font-size: 18px;
   font-weight: 600;
   line-height: 28px;
@@ -527,7 +527,7 @@ table + p {
   max-width: 100%;
   border-collapse: separate;
   border-radius: 8px;
-  background-color: #6364ff;
+  background-color: #232b37;
 }
 
 .email-btn-td {
@@ -594,7 +594,7 @@ table + p {
   font-size: 16px;
   font-weight: 600;
   line-height: 24px;
-  color: #17063b;
+  color: #232b37;
 }
 
 .email-status-header-handle {
@@ -607,7 +607,7 @@ table + p {
   font-size: 14px;
   font-weight: 600;
   line-height: 18px;
-  color: #17063b;
+  color: #232b37;
 }
 
 .email-quote-header-handle {
@@ -635,17 +635,17 @@ table + p {
     font-size: 14px;
     line-height: 20px;
     margin-bottom: 20px;
-    color: #17063b;
+    color: #232b37;
     white-space: pre-wrap;
     unicode-bidi: plaintext;
   }
 
   a {
-    color: #6364ff;
+    color: #232b37;
     text-decoration: none;
 
     &:hover {
-      color: #563acc !important;
+      color: #1a212c !important;
     }
   }
 
@@ -669,18 +669,18 @@ table + p {
   margin-top: 16px;
   font-size: 14px;
   line-height: 20px;
-  color: #17063b;
+  color: #232b37;
 
   img {
     border-radius: 8px;
   }
 
   a {
-    color: #6364ff;
+    color: #232b37;
     text-decoration: none;
 
     &:hover {
-      color: #563acc !important;
+      color: #1a212c !important;
     }
   }
 }
@@ -772,7 +772,7 @@ table + p {
 .email-checklist-text-td {
   h3 {
     margin: 0 0 4px;
-    color: #17063b;
+    color: #232b37;
     font-size: 14px;
     font-weight: 600;
     line-height: 16.8px;
@@ -821,13 +821,13 @@ table + p {
 }
 
 .email-link-with-arrow {
-  color: #6364ff;
+  color: #232b37;
   font-size: 14px;
   font-weight: 600;
   line-height: 16.8px;
 
   &:hover {
-    color: #563acc !important;
+    color: #1a212c !important;
   }
 
   span {
@@ -838,7 +838,7 @@ table + p {
 
 .email-column-action-td {
   padding: 24px 0;
-  color: #6364ff;
+  color: #232b37;
   font-size: 14px;
   font-weight: 600;
   line-height: 16.8px;
@@ -876,7 +876,7 @@ table + p {
   vertical-align: top;
 
   h3 {
-    color: #17063b;
+    color: #232b37;
     font-size: 14px;
     font-weight: 600;
     line-height: 20px;
@@ -916,7 +916,7 @@ table + p {
   }
 
   h3 {
-    color: #17063b;
+    color: #232b37;
     font-size: 14px;
     font-weight: 600;
     line-height: 20px;
@@ -1027,4 +1027,313 @@ table + p {
   .email-desktop-text-right {
     text-align: right;
   }
+}
+
+/* -----------------------------------------------------------------------------
+   FEDIWAY: structural overrides for the email surface
+   -----------------------------------------------------------------------------
+   The find-replace pass at the top of this file already swapped Mastodon's
+   blurple for Fediway navy. This block reshapes the parts that need more
+   than a color change: the header band typography, the CTA button, the
+   card chrome, and the footer.
+
+   Premailer inlines all of this at send time, so values must be literal
+   hex/px and selectors must not depend on attribute or pseudo state that
+   premailer cannot resolve.
+*/
+
+/* Header band — kill the wordmark trail, simplify */
+.email-header-logo-p {
+  display: none !important;
+}
+
+.email-header-logo-td {
+  padding: 28px 32px 24px !important;
+  text-align: left !important;
+}
+
+.email-header-td {
+  background-color: #fff !important;
+  border-bottom: 1px solid #e8e6df !important;
+}
+
+/* Heading area inside the header */
+.email-header-heading-td {
+  padding: 24px 32px 32px !important;
+  background-color: #fff !important;
+}
+
+.email-header-heading-td h1 {
+  font-family: Inter, 'Lucida Grande', sans-serif !important;
+  font-size: 24px !important;
+  line-height: 30px !important;
+  font-weight: 700 !important;
+  color: #232b37 !important;
+  letter-spacing: -0.01em !important;
+  margin: 0 !important;
+}
+
+.email-header-heading-td p {
+  font-family: Inter, 'Lucida Grande', sans-serif !important;
+  font-size: 15px !important;
+  line-height: 22px !important;
+  font-weight: 400 !important;
+  color: #6d7180 !important;
+  margin: 8px 0 0 !important;
+}
+
+.email-header-heading-img-td {
+  padding: 0 16px 0 0 !important;
+  vertical-align: middle !important;
+}
+
+/* Wave/separator below the header — hide it, we use a clean border instead */
+.email-header-after-div,
+.email-header-after-inside-div {
+  display: none !important;
+  height: 0 !important;
+}
+
+/* Body — clean white card */
+.email-card-table {
+  background-color: #fff !important;
+}
+
+.email-card-td {
+  background-color: #fff !important;
+  padding: 0 !important;
+}
+
+.email-body-table {
+  background-color: #fff !important;
+}
+
+.email-body-td {
+  background-color: #fff !important;
+}
+
+.email-body-padding-td {
+  padding: 32px !important;
+  background-color: #fff !important;
+}
+
+.email-body-huge-padding-td {
+  padding: 32px !important;
+  background-color: #fff !important;
+}
+
+.email-body-columns-td {
+  padding: 0 32px 32px !important;
+  background-color: #fff !important;
+}
+
+.email-extra-td {
+  padding: 32px !important;
+  background-color: #fafaf7 !important;
+}
+
+/* Body typography */
+.email-prose p {
+  font-family: Inter, 'Lucida Grande', sans-serif !important;
+  font-size: 15px !important;
+  line-height: 23px !important;
+  color: #232b37 !important;
+  margin: 0 0 16px !important;
+}
+
+.email-prose p:last-child {
+  margin-bottom: 0 !important;
+}
+
+.email-prose strong {
+  font-weight: 600 !important;
+  color: #232b37 !important;
+}
+
+.email-prose a {
+  color: #232b37 !important;
+  text-decoration: underline !important;
+  text-decoration-color: #dbddff !important;
+  text-underline-offset: 2px !important;
+}
+
+.email-h2 {
+  font-family: Inter, 'Lucida Grande', sans-serif !important;
+  font-size: 18px !important;
+  line-height: 24px !important;
+  font-weight: 700 !important;
+  color: #232b37 !important;
+  letter-spacing: -0.01em !important;
+  margin: 0 0 6px !important;
+}
+
+.email-h-sub {
+  font-family: Inter, 'Lucida Grande', sans-serif !important;
+  font-size: 14px !important;
+  line-height: 20px !important;
+  color: #6d7180 !important;
+  margin: 0 0 20px !important;
+}
+
+/* CTA button — navy pill matching the auth surface */
+.email-btn-table {
+  margin: 24px 0 !important;
+}
+
+.email-btn-td {
+  background-color: #232b37 !important;
+  border-radius: 9999px !important;
+  padding: 0 !important;
+}
+
+.email-btn-a {
+  display: inline-block !important;
+  padding: 12px 28px !important;
+  background-color: #232b37 !important;
+  color: #fff !important;
+  font-family: Inter, 'Lucida Grande', sans-serif !important;
+  font-size: 15px !important;
+  line-height: 20px !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  border-radius: 9999px !important;
+  letter-spacing: 0 !important;
+}
+
+/* Inline links inside the email body */
+.email-link-with-arrow {
+  font-family: Inter, 'Lucida Grande', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: #232b37 !important;
+  text-decoration: none !important;
+}
+
+.email-link-with-arrow span {
+  margin-left: 4px !important;
+  color: #232b37 !important;
+}
+
+/* Welcome email — instance card */
+.email-header-card {
+  background-color: #fafaf7 !important;
+  border: 1px solid #e8e6df !important;
+  border-radius: 16px !important;
+  overflow: hidden !important;
+}
+
+.email-header-card-banner-td {
+  height: 100px !important;
+  background-size: cover !important;
+  background-position: center !important;
+}
+
+.email-header-card-body-td {
+  padding: 20px !important;
+  background-color: #fafaf7 !important;
+}
+
+.email-header-card-instance {
+  font-family: Inter, 'Lucida Grande', sans-serif !important;
+  font-size: 16px !important;
+  line-height: 22px !important;
+  font-weight: 700 !important;
+  color: #232b37 !important;
+  margin: 0 0 6px !important;
+}
+
+.email-header-card-description {
+  font-family: Inter, 'Lucida Grande', sans-serif !important;
+  font-size: 13px !important;
+  line-height: 19px !important;
+  color: #6d7180 !important;
+  margin: 0 0 16px !important;
+}
+
+/* Welcome email — checklist items */
+.email-checklist-item-td {
+  padding: 16px 0 !important;
+  border-bottom: 1px solid #e8e6df !important;
+}
+
+/* Footer — small, muted, centered */
+.email-footer-td {
+  padding: 32px 20px 40px !important;
+  text-align: center !important;
+  background-color: transparent !important;
+}
+
+.email-footer-p {
+  font-family: Inter, 'Lucida Grande', sans-serif !important;
+  font-size: 12px !important;
+  line-height: 18px !important;
+  color: #6d7180 !important;
+  margin: 6px 0 !important;
+  text-align: center !important;
+}
+
+.email-footer-p a {
+  color: #6d7180 !important;
+  text-decoration: underline !important;
+  text-decoration-color: rgba(109 113 128 / 35%) !important;
+}
+
+.email-footer-logo-a img {
+  height: 32px !important;
+  width: auto !important;
+  opacity: 0.7 !important;
+}
+
+/* Email body background — slight warm off-white instead of cool gray */
+.email,
+body {
+  background-color: #fafaf7 !important;
+  color: #232b37 !important;
+}
+
+/* -----------------------------------------------------------------------------
+   FEDIWAY: kill upstream background-image PNGs
+   -----------------------------------------------------------------------------
+   The find-replace pass at the top only touched hex colors. Four upstream
+   rules pull in literal Mastodon-branded background PNGs that render OVER
+   our background-color overrides:
+
+   - mailer-new/common/header-bg-start.png  (dark purple header pattern)
+   - mailer-new/common/header-bg-end.png    (continuation)
+   - mailer-new/welcome/purple-extra-soft-wave.png  (welcome bottom band)
+   - mailer-new/welcome/purple-extra-soft-spacer.png
+
+   Override them all to none so our flat Fediway colors win.
+*/
+
+.email-header-table,
+.email-header-table td,
+.email-header-td {
+  background-image: none !important;
+}
+
+.email-extra-wave,
+.email-extra-td,
+.email-extra {
+  background-image: none !important;
+  background-color: #fff !important;
+}
+
+/* Body background — match the auth surface (pure white, no gradient since
+   email clients can't render CSS gradients reliably). */
+.email,
+body,
+.email-w-full,
+.email-container {
+  background-color: #fff !important;
+}
+
+.email-card-table,
+.email-card-td {
+  background-color: #fff !important;
+}
+
+/* Logo placeholder — kill the upstream "/ instance.com" wordmark trail */
+.email-header-logo-span {
+  display: none !important;
 }

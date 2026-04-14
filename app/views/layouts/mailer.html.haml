@@ -2,16 +2,17 @@
 %html{ lang: I18n.locale, dir: locale_direction }
   %head
     %meta{ 'charset' => 'utf-8' }
-    %title Mastodon
+    %title Fediway
     %meta{ name: 'x-apple-disable-message-reformatting' }
     %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1' }
     %meta{ name: 'format-detection', content: 'telephone=no, date=no, address=no, email=no, url=no' }
+    %meta{ name: 'color-scheme', content: 'light only' }
     %meta{ name: 'supported-color-schemes', content: 'light' }
     %style
       \table { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
     %style{ 'data-premailer': 'ignore' }
       \.email a { color: inherit; text-decoration: none; }
-      \.email-btn-hover:hover { background-color: #563acc !important; }
+      \.email-btn-hover:hover { background-color: #1a212c !important; }
     /[if mso]
       <xml>
       <o:OfficeDocumentSettings xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -50,7 +51,7 @@
                                 /[if mso]
                                   </v:textbox></v:rect>
                                 = link_to root_url, class: 'email-header-logo-a' do
-                                  = image_tag frontend_asset_url('images/mailer-new/common/logo-header.png'), alt: 'Mastodon', width: 157, height: 40
+                                  = image_tag frontend_asset_url('images/fediway/mailer/logo-header.png'), alt: 'Fediway', width: 157, height: 40
 
                           -# Heading
                           = yield :heading
@@ -75,7 +76,7 @@
                   %td.email-footer-td
                     %p.email-footer-p
                       = link_to root_url, class: 'email-footer-logo-a' do
-                        = image_tag frontend_asset_url('images/mailer-new/common/logo-footer.png'), alt: 'Mastodon', width: 44, height: 44
+                        = image_tag frontend_asset_url('images/fediway/mailer/logo-footer.png'), alt: 'Fediway', width: 44, height: 44
                     %p.email-footer-p
                       = t 'about.hosted_on', domain: site_hostname
                     %p.email-footer-p

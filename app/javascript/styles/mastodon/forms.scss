@@ -1814,39 +1814,47 @@ $fediway-auth-body-font: 'Inter', ui-sans-serif, system-ui, sans-serif;
       }
     }
 
-    // Footer links below the form
+    // Footer links below the form. Wraps gracefully on narrow viewports.
+    // Middot dividers are hidden — gap-based separation handles spacing
+    // and survives wrapping cleanly.
     .auth-footer {
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       justify-content: center;
-      gap: 16px;
-      margin: 20px 0 0;
+      gap: 8px 20px;
+      margin: 24px 0 0;
+      padding: 0;
+      list-style: none;
       font-family: $fediway-auth-body-font;
-      font-size: 15px;
+      font-size: 14px;
+      line-height: 20px;
 
       a {
         color: var(--fediway-card-foreground);
-        font-weight: 600;
-        text-decoration: underline;
-        text-decoration-color: var(--fediway-secondary);
-        text-underline-offset: 2px;
-        transition: text-decoration-color 200ms ease-out;
+        font-weight: 500;
+        text-decoration: none;
+        white-space: nowrap;
+        transition: color 200ms ease-out;
 
         &:hover {
-          text-decoration-color: var(--fediway-primary);
+          color: var(--fediway-primary);
+          text-decoration: underline;
+          text-decoration-color: var(--fediway-secondary);
+          text-decoration-thickness: 2px;
+          text-underline-offset: 3px;
         }
 
         &:focus-visible {
-          outline: none;
-          box-shadow: 0 0 0 $fediway-auth-ring-width
+          outline: $fediway-auth-ring-width solid
             color-mix(in srgb, var(--fediway-ring) 50%, transparent);
+          outline-offset: 4px;
           border-radius: 4px;
         }
       }
 
       .auth-footer__divider {
-        color: var(--fediway-muted-foreground);
-        user-select: none;
+        display: none;
       }
     }
   }
@@ -2465,4 +2473,252 @@ $fediway-auth-body-font: 'Inter', ui-sans-serif, system-ui, sans-serif;
 .auth-layout .auth-card .simple_form .input.password,
 .auth-layout .auth-card .simple_form .input.url {
   overflow: visible;
+}
+
+// -----------------------------------------------------------------------------
+// FEDIWAY: leading icons inside auth pill inputs
+// -----------------------------------------------------------------------------
+// Inputs flagged with .auth-icon-{envelope,lock,user} (set via Simple Form's
+// wrapper_html option) get a 20px Phosphor-style stroke icon positioned at
+// 18px from the left edge, vertically centered. Implemented with mask-image
+// + background-color so the icon recolors with --fediway-muted-foreground
+// in light/dark themes.
+
+$fediway-icon-envelope: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Crect x='32' y='48' width='192' height='160' rx='8' fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='16'/%3E%3Cpolyline points='224 56 128 144 32 56' fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='16'/%3E%3C/svg%3E");
+
+$fediway-icon-lock: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Crect x='40' y='88' width='176' height='128' rx='8' fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='16'/%3E%3Cpath d='M88 88V52a40 40 0 0 1 80 0v36' fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='16'/%3E%3C/svg%3E");
+
+$fediway-icon-user: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Ccircle cx='128' cy='96' r='64' fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='16'/%3E%3Cpath d='M30.99 216a112 112 0 0 1 194.02 0' fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='16'/%3E%3C/svg%3E");
+
+$fediway-icon-warning: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Ccircle cx='128' cy='128' r='96' fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='16'/%3E%3Cline x1='128' y1='80' x2='128' y2='136' fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='16'/%3E%3Ccircle cx='128' cy='172' r='12' fill='%23000'/%3E%3C/svg%3E");
+
+$fediway-icon-check: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Ccircle cx='128' cy='128' r='96' fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='16'/%3E%3Cpolyline points='172 104 113.33 160 84 132' fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='16'/%3E%3C/svg%3E");
+
+@mixin fediway-input-icon($icon) {
+  .label_input {
+    position: relative;
+
+    // Icon is anchored to the BOTTOM of .label_input (where the input lives)
+    // because the with_label wrapper puts the label INSIDE .label_input
+    // above the input. Center of the wrapper sits between them, not on
+    // the input. bottom = (input height / 2) - (icon height / 2) = 24 - 10 = 14
+    &::before {
+      content: '';
+      position: absolute;
+      left: 18px;
+      bottom: 14px;
+      width: 20px;
+      height: 20px;
+      background-color: var(--fediway-muted-foreground);
+      mask-image: $icon;
+      mask-size: contain;
+      mask-repeat: no-repeat;
+      mask-position: center;
+      -webkit-mask-image: $icon;
+      -webkit-mask-size: contain;
+      -webkit-mask-repeat: no-repeat;
+      -webkit-mask-position: center;
+      pointer-events: none;
+      z-index: 1;
+      transition: background-color 200ms ease-out;
+    }
+  }
+
+  input[type='text'],
+  input[type='email'],
+  input[type='password'] {
+    padding-left: 50px;
+  }
+
+  // Icon picks up the focus ring color when the input is focused
+  .label_input:has(input:focus)::before {
+    background-color: var(--fediway-ring);
+  }
+}
+
+.auth-layout .auth-card .simple_form {
+  .input.auth-icon-envelope {
+    @include fediway-input-icon($fediway-icon-envelope);
+  }
+
+  .input.auth-icon-lock {
+    @include fediway-input-icon($fediway-icon-lock);
+  }
+
+  .input.auth-icon-user {
+    @include fediway-input-icon($fediway-icon-user);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// FEDIWAY: error / flash message styling inside the auth card
+// -----------------------------------------------------------------------------
+// Mastodon's shared/_error_messages partial outputs .flash-message.alert with
+// no per-field detail. We restyle it to match our .auth-error look: red box
+// with leading warning icon and Fediway typography.
+
+.auth-layout .auth-card {
+  .flash-message.alert,
+  .flash-message.warning,
+  .flash-message.error {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin: 0 0 16px;
+    padding: 14px 16px;
+    background: var(--fediway-destructive-bg);
+    border: 1px solid var(--fediway-destructive-border);
+    border-radius: 12px;
+    color: var(--fediway-destructive);
+    font-family: $fediway-auth-body-font;
+    font-size: 13px;
+    line-height: 18px;
+
+    strong {
+      font-weight: 600;
+      color: var(--fediway-destructive);
+    }
+
+    &::before {
+      content: '';
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      margin-top: 1px;
+      background-color: var(--fediway-destructive);
+      mask-image: $fediway-icon-warning;
+      mask-size: contain;
+      mask-repeat: no-repeat;
+      mask-position: center;
+      -webkit-mask-image: $fediway-icon-warning;
+      -webkit-mask-size: contain;
+      -webkit-mask-repeat: no-repeat;
+      -webkit-mask-position: center;
+    }
+  }
+
+  // Mastodon's .input.field_with_errors marks individual fields. Recolor it
+  // from upstream coral to Fediway destructive.
+  .simple_form .input.field_with_errors {
+    label,
+    .label_input > label {
+      color: var(--fediway-destructive);
+    }
+
+    input[type='text'],
+    input[type='email'],
+    input[type='password'],
+    input[type='url'],
+    input[type='tel'],
+    input[type='number'] {
+      border-color: var(--fediway-destructive);
+    }
+
+    .error {
+      display: block;
+      margin-top: 6px;
+      font-family: $fediway-auth-body-font;
+      font-size: 12px;
+      line-height: 16px;
+      font-weight: 500;
+      color: var(--fediway-destructive);
+    }
+  }
+
+  // Notice flash (success) — green-tinted info box
+  .flash-message.notice,
+  .flash-message.success {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin: 0 0 16px;
+    padding: 14px 16px;
+    background: rgb(123 195 161 / 12%);
+    border: 1px solid rgb(123 195 161 / 35%);
+    border-radius: 12px;
+    color: #2f7053;
+    font-family: $fediway-auth-body-font;
+    font-size: 13px;
+    line-height: 18px;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// FEDIWAY: post-confirmation celebration state
+// -----------------------------------------------------------------------------
+// Used by confirmations/new when the account has just been confirmed.
+
+.auth-layout .auth-card {
+  .auth-celebrate {
+    text-align: center;
+
+    .auth-celebrate__icon {
+      display: block;
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 20px;
+      border-radius: 9999px;
+      background-color: color-mix(
+        in srgb,
+        var(--fediway-secondary) 35%,
+        transparent
+      );
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        margin: auto;
+        width: 36px;
+        height: 36px;
+        background-color: var(--fediway-primary);
+        mask-image: $fediway-icon-check;
+        mask-size: contain;
+        mask-repeat: no-repeat;
+        mask-position: center;
+        -webkit-mask-image: $fediway-icon-check;
+        -webkit-mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+      }
+    }
+
+    .title {
+      text-align: center;
+    }
+
+    .lead {
+      text-align: center;
+    }
+
+    .auth-celebrate__cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin: 24px auto 0;
+      padding: 0 24px;
+      height: $fediway-auth-button-height;
+      background: var(--fediway-primary);
+      color: var(--fediway-primary-foreground);
+      border: 0;
+      border-radius: 9999px;
+      font-family: $fediway-auth-body-font;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background-color 200ms ease-out;
+
+      &:hover {
+        background: var(--fediway-primary-hover);
+      }
+
+      &:focus-visible {
+        outline: $fediway-auth-ring-width solid
+          color-mix(in srgb, var(--fediway-ring) 50%, transparent);
+        outline-offset: 2px;
+      }
+    }
+  }
 }
